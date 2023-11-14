@@ -43,4 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function posts()//外部キーとの接続
+    {
+        return $this->hasMany(Post::class); //実行中のPostインスタンスにCategoryクラスを紐づける。紐づいたクラスのプロパティ、メソッドはメンバー式として使用可能
+         //hasOne, hasMany (thisが親),   belongsTo, belongsToMany (foreign classが親)
+    }
+
+
 }

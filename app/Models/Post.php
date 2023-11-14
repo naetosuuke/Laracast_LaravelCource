@@ -21,4 +21,10 @@ class Post extends Model
         //hasOne, hasMany (thisが親),   belongsTo, belongsToMany (foreign classが親)
     }
 
+    public function author() //通常、author_idを参照してキー接続される
+    {
+        return $this->belongsTo(User::class, 'user_id');//第二引数で任意の外部キーを使用できる 
+    }
+
+
 }

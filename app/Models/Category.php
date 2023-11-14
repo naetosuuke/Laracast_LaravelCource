@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory;
+    use HasFactory; //これがついていると、同じ名前のfactoryファイルがああれば呼び出すことが可能
 
     public function posts() //外部キーとの接続
     {

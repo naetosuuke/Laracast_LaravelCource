@@ -1,0 +1,15 @@
+Using libraries for this product
+
+clokwork 
+
+https://github.com/itsgoingd/clockwork
+
+
+ブラウザへのアドオンもある
+https://chromewebstore.google.com/detail/clockwork/dmggabnehkmmfmdffgajcflpdjlnoemp
+
+
+yaml front matter
+Html内の Yamlデータをパースするためのライブラリ
+https://github.com/spatie/yaml-front-matter
+
