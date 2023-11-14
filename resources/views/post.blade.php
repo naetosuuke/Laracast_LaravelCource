@@ -1,24 +1,19 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <link rel="stylesheet" href="/app.css"> <!--適用するCSSのリンク-->
-    <!-- <script src="app.js"></script> 適用するJSのリンク 使わないのでコメントアウト-->
+<x-layout>
 
-</head>
-<body>
     <article>
-    <h1><?= $post->title; //modelのpost.phpから渡された$postの中身を展開 ?></h1>
+    <h1>{{ $post->title }}</h1> <!--bladeによる記載  HTMLタグのパースを認めない。スクリプト埋め込みを回避できる-->
+    
+    <p>
+        <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a> <!--カテゴリ名とリンクを表示-->
+    </p>
 
     <div>
-        <?= $post->body;?>
+        {!! $post->body !!} <!--bladeによる記載  HTMLタグのパースを認める-->
+        
     </div>
 
     </article>
 
-<a href="/">Go Back</a>
+    <a href="/">Go Back</a>
 
-</body>
-</html>
+</x-layout>

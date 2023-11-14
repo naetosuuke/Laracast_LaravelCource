@@ -1,28 +1,26 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
-    <link rel="stylesheet" href="/app.css"> <!--適用するCSSのリンク-->
-    <!-- <script src="app.js"></script> 適用するJSのリンク 使わないのでコメントアウト-->
+<x-layout>  
+  <!--x-layoutタグを使うと、layout.blade.phpファイルの中身を引用でき、間に囲われている要素はlayout中のslotに格納される-->
 
-</head>
-<body>
-  <?php foreach ($posts as $post) : ?>
-        <article>
+@foreach ($posts as $post)
+    <!--foreach ($posts as $post): のbladeによる記述方法　framework配下にコンパイルされたphpファイルがある-->
+        <article class="{{ $loop->even ? 'foobar' : ''}}"> <!--不明　HTMLタグへの埋め込み効果を確認-->
         <h1>
-                <a href="/posts/<?= $post->slug; ?>">
-                <?= $post->title;?>
+                <a href="/posts/{{ $post->slug }}">
+                {{ $post->title }}
+                 <!--echo $post->title; のbladeによる記述方法　framework配下にコンパイルされたphpファイルがある-->
                 </a>
         </h1>
         
+      <p>
+        <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a>
+      </p>
+
+
         <div>
-                 <p><?= $post->excerpt;?></p>        
+             {{ $post->excerpt }}      
         </div>
 
-        </article>
-  <?php endforeach ;?>
 
-</body>
-</html>
+        </article>
+  @endforeach
+</x-layout>
